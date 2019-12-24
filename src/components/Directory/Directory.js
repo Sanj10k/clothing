@@ -1,5 +1,4 @@
 import React from 'react';
-import { render } from '@testing-library/react';
 import MenuItem from '../MenuItem/MenuItem';
 import './Directory.scss';
 
@@ -42,21 +41,20 @@ class Directory extends React.Component {
                   linkUrl: 'shop/mens'
                 }
               ]
-        }
+        };
     }
 
 
-    render() 
-    {
+    render() {
         return (
             <div className='directory-menu'>
                 {
-                    this.state.sections.map(({title, imageUrl, id, size}) => (
-                        <MenuItem key={id} title={title} imageUrl={imageUrl} size={size} />
+                    this.state.sections.map(({ id, ...OtherSectionProps}) => (
+                        <MenuItem key={id} {...OtherSectionProps} />
                     ))
                 }
             </div>
-        )
+        );
     }
 }
 export default Directory;
